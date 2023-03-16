@@ -1,0 +1,24 @@
+.gameInterface{
+    margin-top: 3em;
+   background-color: #FFD062;
+   flex-grow: 1;
+   padding: 20px;
+}
+.move_back{
+    width: 100%;
+    padding: 20px;
+}
+.description{
+text-align: center;
+}
+.actionDescription{
+    text-align: center;
+    margin: 20px 0px;
+}
+
+.clickedWrongOption{
+    background-color: rgb(255, 84, 84);
+}
+.clickedCorrectOption{
+    background-color: rgb(72, 255, 127);
+}
