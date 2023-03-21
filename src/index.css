@@ -81,6 +81,9 @@ button{
 button:hover{
     transform: translateY(-2px);
 }
+button:disabled:hover{
+    transform: none;
+}
 article, aside, details, figcaption, figure, 
 footer, header, hgroup, menu, nav, section {
 	display: block;

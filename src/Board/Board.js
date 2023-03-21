@@ -5,11 +5,12 @@ import { useSelector } from 'react-redux'
 
 const Board = () => {
 
-    const currentPinCoordinates = useSelector(state=>state.game.currentPinCoordinates)   
     const currentPinPosition = useSelector(state=>state.game.currentPinPosition)   
     const isGameStarted = useSelector(state=>state.game.isGameStarted)   
     const diceValue = useSelector(state=>state.game.currentDiceVal)   
 
+
+    useEffect(()=>{},[currentPinPosition])
     const pin = (pos) => {
     
       if(
@@ -20,7 +21,9 @@ const Board = () => {
       }else if(isGameStarted && 
         currentPinPosition !== pos &&
         currentPinPosition - diceValue == pos
+        
       ){
+        console.log(currentPinPosition - diceValue)
         return classes.removePin 
       }
       
@@ -106,8 +109,8 @@ const Board = () => {
             <div className={pin(8)}><p>8</p></div>    
             <div className={classes.empty}></div>    
             
-            <div className={classes.empty}></div>    
-            <div className={pin(15)}><p>15</p></div>  
+            <div className={classes.empty}></div>  
+            <div className={classes.empty}></div>  
             <div className={pin(14)}><p>14</p></div>    
             <div className={pin(13)}><p>13</p></div>    
             <div className={pin(12)}><p>12</p></div>    
@@ -117,8 +120,8 @@ const Board = () => {
             <div className={classes.empty}></div>   
 
             <div className={classes.empty}></div>    
-            <div className={pin(16)}><p>16</p></div>   
             <div className={classes.empty}></div>
+            <div className={pin(15)}><p>15</p></div>   
             <div className={classes.empty}></div>
             <div className={classes.empty}></div>
             <div className={classes.empty}></div>
@@ -127,13 +130,13 @@ const Board = () => {
             <div className={classes.empty}></div> 
              
             <div className={classes.empty}></div>    
-            <div className={pin(17)}><p>17</p></div>    
-            <div className={pin(18)}><p>18</p></div>  
+            <div className={classes.empty}></div>    
+            <div className={pin(16)}><p>16</p></div>    
+            <div className={pin(17)}><p>17</p></div>  
+            <div className={pin(18)}><p>18</p></div>    
             <div className={pin(19)}><p>19</p></div>    
-            <div className={pin(20)}><p>20</p></div>    
-            <div className={pin(21)}><p>21</p></div>    
-            <div className={pin(22)}><p>22</p></div>    
-            <div className={pin(23)}><p>23</p></div>  
+            <div className={classes.empty}></div> 
+            <div className={classes.empty}></div> 
             <div className={classes.empty}></div> 
 
             <div className={classes.empty}></div>    
@@ -141,23 +144,23 @@ const Board = () => {
             <div className={classes.empty}></div>
             <div className={classes.empty}></div>
             <div className={classes.empty}></div>
+            <div className={pin(20)}><p>20</p></div>  
             <div className={classes.empty}></div>    
             <div className={classes.empty}></div> 
-            <div className={pin(24)}><p>24</p></div>    
             <div className={classes.empty}></div> 
 
             <div className={classes.empty}></div>       
-            <div className={pin(31)}><p>31</p></div>    
-            <div className={pin(30)}><p>30</p></div>    
-            <div className={pin(29)}><p>29</p></div>    
-            <div className={pin(28)}><p>28</p></div>  
-            <div className={pin(27)}><p>27</p></div>    
-            <div className={pin(26)}><p>26</p></div>    
-            <div className={pin(25)}><p>25</p></div>
+            <div className={pin(25)}><p>25</p></div>    
+            <div className={pin(24)}><p>24</p></div>    
+            <div className={pin(23)}><p>23</p></div>    
+            <div className={pin(22)}><p>22</p></div>  
+            <div className={pin(21)}><p>21</p></div>    
+            <div className={classes.empty}></div> 
+            <div className={classes.empty}></div> 
             <div className={classes.empty}></div>       
 
             <div className={classes.empty}></div>   
-            <div className={pin(32)}><p>32</p></div>    
+            <div className={pin(26)}><p>26</p></div>    
             <div className={classes.empty}></div>    
             <div className={classes.empty}></div>
             <div className={classes.empty}></div>
@@ -167,13 +170,13 @@ const Board = () => {
             <div className={classes.empty}></div>  
            
             <div className={classes.empty}></div>       
+            <div className={pin(27)}><p>27</p></div>    
+            <div className={pin(28)}><p>28</p></div>    
+            <div className={pin(29)}><p>29</p></div>    
+            <div className={pin(30)}><p>30</p></div>    
+            <div className={pin(31)}><p>31</p></div>  
+            <div className={pin(32)}><p>32</p></div>    
             <div className={pin(33)}><p>33</p></div>    
-            <div className={pin(34)}><p>34</p></div>    
-            <div className={pin(35)}><p>35</p></div>    
-            <div className={pin(36)}><p>36</p></div>    
-            <div className={pin(37)}><p>37</p></div>  
-            <div className={pin(38)}><p>38</p></div>    
-            <div className={pin(39)}><p>39</p></div>    
             <div className={classes.empty}></div>  
              
             
@@ -184,38 +187,40 @@ const Board = () => {
             <div className={classes.empty}></div>
             <div className={classes.empty}></div>    
             <div className={classes.empty}></div>       
-            <div className={pin(40)}><p>40</p></div>  
+            <div className={pin(34)}><p>34</p></div>  
+            <div className={classes.empty}></div>  
+
+            <div className={classes.empty}></div>    
+            <div className={classes.empty}></div>
+            <div className={classes.empty}></div>
+            <div className={classes.empty}></div>
+            <div className={classes.empty}></div>
+            <div className={classes.empty}></div>    
+            <div className={classes.empty}></div>       
+            <div className={pin(35)}><p>35</p></div>  
+            <div className={classes.empty}></div>  
+
+            <div className={classes.empty}></div>    
+            <div className={pin(44)}><p>44</p></div>  
+            <div className={classes.empty}></div>
+            <div className={classes.empty}></div>
+            <div className={classes.empty}></div>
+            <div className={classes.empty}></div>    
+            <div className={classes.empty}></div>       
+            <div className={pin(36)}><p>36</p></div>  
             <div className={classes.empty}></div>  
 
             <div className={classes.empty}></div>  
-            <div className={pin(48)}><p>48</p></div>    
-            <div className={pin(47)}><p>47</p></div>    
-            <div className={pin(46)}><p>46</p></div>    
-            <div className={pin(45)}><p>45</p></div>  
-            <div className={pin(44)}><p>44</p></div>    
             <div className={pin(43)}><p>43</p></div>    
-            <div className={pin(42)}><p>42</p></div>   
+            <div className={pin(42)}><p>42</p></div>    
+            <div className={pin(41)}><p>41</p></div>    
+            <div className={pin(40)}><p>40</p></div>  
+            <div className={pin(39)}><p>39</p></div>    
+            <div className={pin(38)}><p>38</p></div>    
+            <div className={pin(37)}><p>37</p></div>   
             <div className={classes.empty}></div>  
 
-            <div className={classes.empty}></div>  
-            <div className={pin(49)}><p>49</p></div>   
-            <div className={classes.empty}></div>    
-            <div className={classes.empty}></div>
-            <div className={classes.empty}></div>
-            <div className={classes.empty}></div>
-            <div className={classes.empty}></div>
-            <div className={classes.empty}></div>    
-            <div className={classes.empty}></div> 
-               
-            <div className={classes.empty}></div>       
-            <div className={pin(50)}><p>50</p></div>    
-            <div className={pin(51)}><p>51</p></div>    
-            <div className={pin(52)}><p>52</p></div>    
-            <div className={pin(53)}><p>53</p></div>    
-            <div className={pin(54)}><p>54</p></div>  
-            <div className={pin(55)}><p>55</p></div>    
-            <div className={pin(56)}><p>56</p></div>   
-            <div className={classes.empty}></div>       
+                  
 
             <div className={classes.empty}></div>
             <div className={classes.empty}></div>

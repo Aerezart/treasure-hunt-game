@@ -6,24 +6,30 @@ import { gameActions } from '../store/gameSlice'
 import { useDispatch } from 'react-redux'
 import { gameContent } from '../store/gameContent'
 import GameInterface from './GameInterface'
+import Inventory from './Inventory'
+import { combineReducers } from 'redux'
 
 const ControlsNav = () => {
 
     const dispatch = useDispatch()
     const currentPinPosition = useSelector(state=>state.game.currentPinPosition)   
+    const passedPuzzles = useSelector(state=>state.game.passedPuzzles)   
 
-   
+    const [inventoryFull, setInventoryFull]= useState(false)
+    const [clickedWrongOption, setClickedWrongOption] = useState(null)
+    const [clickedCorrectOption, setClickedCorrectOption] = useState(null)
+    const playerInventory = useSelector(state=>state.game.inventory)   
     const [dice, setDice] = useState(null)
     const [finishedDiceAnimation, setFinishedDiceAnimation] = useState(false)
     const [turnInProcess, setTurnInProcess] = useState(false)
-    let currentCell = gameContent.find((obj) => obj.id === currentPinPosition);
-
+    const [itemUsed, setItemUsed] = useState(false)
+    let currentCell = gameContent.find((obj) => obj.id == currentPinPosition);
 
     const rollDice =  () => {
     setTurnInProcess(true)
     setFinishedDiceAnimation(false)
 
-    var diceOne   = Math.floor((Math.random() * 6) + 1)
+    var diceOne   = 2
     dispatch(gameActions.setGameStarted(true))
    
 
@@ -36,28 +42,51 @@ const ControlsNav = () => {
 
     setTimeout(()=>{
         setDice(diceOne)
-    }, 300)
+    }, 200)
 
     setTimeout(  ()=>{
         setFinishedDiceAnimation(true)
-        
+        setItemUsed(false)
+        setClickedWrongOption(null)
+        setClickedCorrectOption(null)
 
         
+        if( currentCell.type == 'puzzle' && !passedPuzzles.includes(currentCell.id)){
+           
+            dispatch(gameActions.rememberPassedPuzzle(currentCell.id))
+        }
+        
+        
+        let newPinPosition
+        if(parseInt(currentPinPosition) + diceOne >= 44 ){
+            newPinPosition = 44
+        }else{
+            newPinPosition = parseInt(currentPinPosition) + diceOne
+        }
+        
+        currentCell = gameContent.find((obj) => obj.id == newPinPosition);
+       
 
-        const newPinPosition = currentPinPosition + diceOne
-        currentCell = gameContent.find((obj) => obj.id === newPinPosition);
-
-        if(currentCell.type !== 'trap' || currentCell.type !== 'puzzle'){
+        if(
+        (currentCell.type !== 'trap' && 
+        currentCell.type !== 'puzzle' && 
+        currentCell.type !== 'shortcut' &&
+        currentCell.type !== 'trap_defendable') ||
+        
+        passedPuzzles.includes(newPinPosition)){
             setTurnInProcess(false)
         }
 
-        dispatch(gameActions.changePosition(newPinPosition))
-        dispatch(gameActions.setDiceVal(diceOne))
+        console.log(playerInventory.length)
+        if(currentCell.type == 'item' && playerInventory.length < 3){
+            currentCell.action(dispatch)
+        }else{
+            setInventoryFull(true)
+        }
 
+        dispatch(gameActions.changePosition(newPinPosition))
         
-        
-        
-    }, 1400)
+    }, 1300)
    
     }
 
@@ -70,8 +99,16 @@ const ControlsNav = () => {
   return (
     <div className={classes.controlsNav}>
         <div className={`${classes.controlsNavInner} pixel_corners`}>
-
+        
          <div className="rollDiceContainer" >
+            
+            <Inventory
+            itemUsed={itemUsed}
+            playerInventory={playerInventory} 
+            setItemUsed={setItemUsed} 
+            currentCell={currentCell} 
+            setTurnInProcess={setTurnInProcess}/>
+
             <div className={`diceContainer ${finishedDiceAnimation ? 'finishedAnimation' : ''}`}>
                 <div id='dice1' className={`dice dice-one ${dice && 'show-' + dice}`}>
                     <div id="dice-one-side-one" className='side one '>
@@ -111,13 +148,27 @@ const ControlsNav = () => {
             </div>
         
             <button id='roll' onClick={rollDice} disabled={turnInProcess} className="pixel_corners_smaller">Roll dice!</button>
+           
         </div> 
 
 
+        
+        <GameInterface 
+        passedPuzzles={passedPuzzles}
+        inventoryFull={inventoryFull}
+        playerInventory={playerInventory}
+        itemUsed={itemUsed} 
+        currentCell={currentCell} 
+        currentPinPosition={currentPinPosition} 
+        setTurnInProcess={setTurnInProcess} 
+        turnInProcess={turnInProcess}
+        clickedWrongOption={clickedWrongOption}
+        clickedCorrectOption={clickedCorrectOption}
+        setClickedWrongOption={setClickedWrongOption}
+        setClickedCorrectOption={setClickedCorrectOption}
+        />
 
-        <GameInterface currentCell={currentCell} currentPinPosition={currentPinPosition} setTurnInProcess={setTurnInProcess}/>
-
-
+       
 
 
 

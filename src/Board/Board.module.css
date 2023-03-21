@@ -16,7 +16,7 @@
   
 
   
-    width: calc(100%  - 400px);
+    width: calc(100%  - 450px);
     max-width: calc(150px * 9 + 40px);
    
     max-height: calc(100vh);
@@ -43,22 +43,29 @@
     height: 20px;
     position: absolute;
     content: '';
-    background-color: black;
+   
     z-index: 3;
     transition: 0.3s;
     animation: drawPin 1s ;
     animation: removePin 1s forwards;
 }
 .drawPin:after{
-    width: 20px;
-    height: 20px;
+    width: 100%;
+    height: 100%;
     position: absolute;
     content: '';
     background-color: black;
     z-index: 3;
     transition: 0.3s;
     animation: drawPin 1s ;
+        
+    background: url(../../public/images/pirate.png) no-repeat;
+    background-size: 70%;
+    background-position: 50%;
 }
+
+
+
 
 @keyframes removePin {
     0%{
@@ -100,6 +107,7 @@
     gap: 0px 0px;
     grid-template-columns: 150px 150px 150px 150px 150px 150px 150px 150px 150px;
     background-color: #FED164;
+  
     height: calc(100% );
   position: relative;
 }
@@ -135,34 +143,181 @@
 }
 
 
+.grid>div:nth-child(101):after{
+    position: absolute;
+    content: '';
+    inset: 0;
+    width: 100%;
+    height:  100%;
+    z-index: 200;
+    background-size: contain;
+    background-position: 50%;
+    background: url(../../public/images/treasure.png) no-repeat;
+}
+
+
+.grid>div:nth-child(44):after,
+.grid>div:nth-child(118):after{
+    position: absolute;
+    content: '';
+    inset: 0;
+    width: 100%;
+    height:  100%;
+    z-index: 200;
+    background-size: contain;
+    background-position: 50%;
+    background: url(../../public/images/stones.png) no-repeat;
+}
+.grid>div:nth-child(9):after,
+.grid>div:nth-child(73):after,
+.grid>div:nth-child(130):after{
+
+    position: absolute;
+    content: '';
+    inset: 0;
+    width: 100%;
+    height:  100%;
+    z-index: 200;
+    background-size: contain;
+    background-position: 50%;
+    background: url(../../public/images/stones2.png) no-repeat;
+}
+.grid>div:nth-child(19):after,
+.grid>div:nth-child(99):after{
+    position: absolute;
+    content: '';
+    inset: 0;
+    width: 100%;
+    height:  100%;
+    z-index: 200;
+    background-size: contain;
+    background-position: 50%;
+    background: url(../../public/images/stones.png) no-repeat;
+}
+.grid>div:nth-child(61):after,
+.grid>div:nth-child(96):after{
+    position: absolute;
+    content: '';
+    inset: 0;
+    width: 100%;
+    height:  100%;
+    z-index: 200;
+    background-size: contain;
+    background-position: 50%;
+    background: url(../../public/images/stones2.png) no-repeat;
+}
+
+
+
+
+.grid>div.empty{
+    background-color: #FFF4BE;
+}
+.grid>div:nth-child(9){
+    background: url(../../public/images/sand_top_right.jpg);
+}
+.grid>div:nth-child(1){
+    background: url(../../public/images/sand_top_left.jpg);
+}
+.grid>div:nth-child(135){
+    background: url(../../public/images/sand_bot_right.jpg);
+}
+.grid>div:nth-child(127){
+    background: url(../../public/images/sand_bot_left.jpg);
+}
+.grid>div:nth-child(2),
+.grid>div:nth-child(3),
+.grid>div:nth-child(4),
+.grid>div:nth-child(5),
+.grid>div:nth-child(6),
+.grid>div:nth-child(7),
+.grid>div:nth-child(8){
+    background: url(../../public/images/sand_top.jpg);
+}
+.grid>div:nth-child(128),
+.grid>div:nth-child(129),
+.grid>div:nth-child(130),
+.grid>div:nth-child(131),
+.grid>div:nth-child(132),
+.grid>div:nth-child(133),
+.grid>div:nth-child(134){
+    background: url(../../public/images/sand_bot.jpg);
+}
+.grid>div:nth-child(18),
+.grid>div:nth-child(27),
+.grid>div:nth-child(36),
+.grid>div:nth-child(45),
+.grid>div:nth-child(54),
+.grid>div:nth-child(63),
+.grid>div:nth-child(72),
+.grid>div:nth-child(81),
+.grid>div:nth-child(90),
+.grid>div:nth-child(99),
+.grid>div:nth-child(108),
+.grid>div:nth-child(117),
+.grid>div:nth-child(126)
+{
+    background: url(../../public/images/sand_right.jpg);
+}
+.grid>div:nth-child(10),
+.grid>div:nth-child(19),
+.grid>div:nth-child(28),
+.grid>div:nth-child(37),
+.grid>div:nth-child(46),
+.grid>div:nth-child(55),
+.grid>div:nth-child(64),
+.grid>div:nth-child(73),
+.grid>div:nth-child(82),
+.grid>div:nth-child(91),
+.grid>div:nth-child(100),
+.grid>div:nth-child(109),
+.grid>div:nth-child(118)
+{
+    background: url(../../public/images/sand_left.jpg);
+}
+
+
+.grid>div:nth-child(11){
+    background: url(../../public/images/water_start.jpg) !important;
+}
+
+.grid>div:nth-child(110){
+    background: url(../../public/images/water_end.jpg) !important;
+}
+
+.grid>div:nth-child(125){
+    background: url(../../public/images/water_end.jpg) !important;
+}
+
+
 .grid>div:nth-child(17), 
-.grid>div:nth-child(53),
+.grid>div:nth-child(51),
 .grid>div:nth-child(89){
     background: url(../../public/images/water_top_right.jpg) !important;
 }
 .grid>div:nth-child(26),
-.grid>div:nth-child(38),
+.grid>div:nth-child(39),
 .grid>div:nth-child(74),
-.grid>div:nth-child(62),
+.grid>div:nth-child(60),
 .grid>div:nth-child(98),
-.grid>div:nth-child(110)
+.grid>div:nth-child(107),
+.grid>div:nth-child(116)
 {
     background: url(../../public/images/water_mid.jpg) !important;
 }
 .grid>div:nth-child(35), 
-.grid>div:nth-child(71),
-.grid>div:nth-child(107){
+.grid>div:nth-child(69),
+.grid>div:nth-child(125){
     background: url(../../public/images/water_bot_right.jpg) !important;
 }
 
 
 
-.grid>div:nth-child(29),
-.grid>div:nth-child(65),
-.grid>div:nth-child(101){
+.grid>div:nth-child(30),
+.grid>div:nth-child(65){
     background: url(../../public/images/water_top_left.jpg) !important;
 }
-.grid>div:nth-child(47),
+.grid>div:nth-child(48),
 .grid>div:nth-child(83),
 .grid>div:nth-child(119){
     background: url(../../public/images/water_bot_left.jpg) !important;
@@ -171,6 +326,10 @@
 
 
 
+
+.grid>div p{
+    user-select: none;
+}
 .grid>div p:not(.grid>div.empty p){
     color:white;
     font-weight: 600;
@@ -196,8 +355,8 @@
 
 
 .grid>div:nth-child(25):after,
-.grid>div:nth-child(58):after,
-.grid>div:nth-child(113):after{
+.grid>div:nth-child(57):after,
+.grid>div:nth-child(77):after{
     position: absolute;
     content: '';
     top:50%;
@@ -205,10 +364,10 @@
     transform: translateY(-50%) translateX(-50%);
 
     width: 100%;
-    max-width: 120px;
-    height: 150px;
+  
+    height:  225px;
     z-index: 200;
-    background: url('../../public/images/bridge.png') no-repeat;
+    background: url('../../public/images/bridge2.png') no-repeat;
     background-size: contain;
     background-position: 50%;
 }
@@ -233,6 +392,83 @@
     background-position: 50%;
 }
 
+.grid>div:nth-child(24):after,
+.grid>div:nth-child(75):after{
+    position: absolute;
+    content: '';
+    top:50%;
+    left:50%;
+    transform: translateY(-50%) translateX(-50%);
+    width: 100%;
+    height:  100%;
+    z-index: 200;
+    background: url('../../public/images/crab.png') no-repeat;
+    background-size: contain;
+    background-position: 50%;
+}
+
+
+.grid>div:nth-child(40):after{
+    position: absolute;
+    content: '';
+    top:50%;
+    left:50%;
+    transform: translateY(-50%) translateX(-50%);
+    width: 100%;
+    height:  100%;
+    z-index: 200;
+    background: url('../../public/images/snake.png') no-repeat;
+    background-size: contain;
+    background-position: 50%;
+}
+.grid>div:nth-child(115):after{
+    position: absolute;
+    content: '';
+    top:50%;
+    left:50%;
+    transform: translateY(-50%) translateX(-50%);
+    width: 100%;
+    height:  100%;
+    z-index: 200;
+    background: url('../../public/images/snake2.png') no-repeat;
+    background-size: contain;
+    background-position: 50%;
+}
+.grid>div:nth-child(55):after,
+.grid>div:nth-child(23):after,
+.grid>div:nth-child(100):after,
+.grid>div:nth-child(112):after,
+.grid>div:nth-child(134):after{
+    position: absolute;
+    content: '';
+    top:50%;
+    left:50%;
+    transform: translateY(-50%) translateX(-50%);
+    width: 100%;
+    height:  100%;
+    z-index: 200;
+    background: url('../../public/images/sand_pattern.png') no-repeat;
+    background-size: contain;
+    background-position: 50%;
+}
+.grid>div:nth-child(7):after,
+.grid>div:nth-child(54):after,
+.grid>div:nth-child(78):after,
+.grid>div:nth-child(108):after
+{
+    position: absolute;
+    content: '';
+    top:50%;
+    left:50%;
+    transform: translateY(-50%) translateX(-50%);
+    width: 100%;
+    height:  100%;
+    z-index: 200;
+    background: url('../../public/images/sand_pattern2.png') no-repeat;
+    background-size: contain;
+    background-position: 50%;
+}
+
 
 .grid>div:nth-child(27):after,
 .grid>div:nth-child(59):after,
@@ -253,6 +489,37 @@
     background: url('../../public/images/palm2.png') no-repeat;
     background-size: contain ;
     background-position: 50%;
+}
+
+
+
+
+
+.grid>div:nth-child(29):after,
+.grid>div:nth-child(30):after,
+.grid>div:nth-child(31):after,
+.grid>div:nth-child(32):after,
+.grid>div:nth-child(33):after,
+.grid>div:nth-child(34):after,
+.grid>div:nth-child(35):after,
+
+
+.grid>div:nth-child(65):after,
+.grid>div:nth-child(66):after,
+.grid>div:nth-child(67):after,
+.grid>div:nth-child(68):after,
+.grid>div:nth-child(69):after,
+.grid>div:nth-child(70):after,
+.grid>div:nth-child(71):after,
+
+.grid>div:nth-child(101):after,
+.grid>div:nth-child(102):after,
+.grid>div:nth-child(103):after,
+.grid>div:nth-child(104):after,
+.grid>div:nth-child(105):after,
+.grid>div:nth-child(106):after,
+.grid>div:nth-child(107):after{
+    transform: rotateY(180deg) ;
 }
 
 /*
