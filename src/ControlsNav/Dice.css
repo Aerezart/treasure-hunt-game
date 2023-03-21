@@ -20,7 +20,7 @@
     padding: 20px;
     color:black;
     border-radius: 10px;
-    margin-bottom: 3em;
+    margin-bottom: 2em;
     transition: 0.3s;
 }
 #roll:disabled{
