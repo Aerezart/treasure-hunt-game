@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/treasure-hunt-game/static/css/main.537ef09f.css",
-    "main.js": "/treasure-hunt-game/static/js/main.0f8ea2cc.js",
+    "main.js": "/treasure-hunt-game/static/js/main.c4eac5f3.js",
     "static/js/787.83d56003.chunk.js": "/treasure-hunt-game/static/js/787.83d56003.chunk.js",
     "index.html": "/treasure-hunt-game/index.html",
     "main.537ef09f.css.map": "/treasure-hunt-game/static/css/main.537ef09f.css.map",
-    "main.0f8ea2cc.js.map": "/treasure-hunt-game/static/js/main.0f8ea2cc.js.map",
+    "main.c4eac5f3.js.map": "/treasure-hunt-game/static/js/main.c4eac5f3.js.map",
     "787.83d56003.chunk.js.map": "/treasure-hunt-game/static/js/787.83d56003.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.537ef09f.css",
-    "static/js/main.0f8ea2cc.js"
+    "static/js/main.c4eac5f3.js"
   ]
 }
