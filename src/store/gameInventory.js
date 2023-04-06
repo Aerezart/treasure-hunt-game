@@ -3,18 +3,18 @@ export const allGameItems = [
     id: 1,
     type: "weapon",
     label: "Sabre",
-    image: "/images/sabre.png",
+    image: "../../public/images/sabre.png",
   },
   {
     id: 2,
     type: "weapon",
     label: "Coconut",
-    image: "/images/coconut.png",
+    image: "../../public/images/coconut.png",
   },
   {
     id: 3,
     type: "weapon",
     label: "Pistol",
-    image: "/images/pistol.png",
+    image: "../../public/images/pistol.png",
   },
 ];
