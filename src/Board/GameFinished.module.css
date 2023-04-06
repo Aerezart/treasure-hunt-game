@@ -1,0 +1,84 @@
+
+
+.modal{
+    position: absolute !important;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 10;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    }
+    .modal_content{
+    width: 100%;
+    max-width: 400px;
+    box-shadow: 0 0 10px rgba(0 0 0/20%);
+    background-color: #FFD062;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 2em 1em 1em 1em;
+    }
+    .treasure{
+        position: relative;
+        height: 300px;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 20px;
+    }
+    .treasure img{
+        position: relative;
+        z-index: 20;
+    }
+    .treasure:after{
+        position: absolute;
+        content: '';
+        width: 300px;
+        height: 300px;
+        inset: 0;
+       left:50%;
+        background: url(../../public/images/circle.png) no-repeat;
+        background-size: 100%;
+        background-position: 50%;
+        animation: rotate 25s infinite linear;
+        transform: translatex(-50%) (-360deg) ;
+       
+    }
+    .treasure:before{
+        position: absolute;
+        content: '';
+        width: 0px;
+        height: 0px;
+        inset: 0;
+       left:50%;
+       top:50%;
+       transform: translatex(-50%) translatex(-50%) ;
+    z-index: 3;
+    box-shadow:  0 0 100px 120px #FFECC1;
+       
+    }
+
+    
+.restart{
+    width: 100%;
+    margin-top: 2em;
+    background-color: white;
+    padding: 20px;
+    color:black;
+    border-radius: 10px;
+    transition: 0.3s;
+}
+
+
+    @keyframes rotate {
+        0%{
+            transform: translatex(-50%) rotate(-360deg) ;
+        }100%{
+            transform: translatex(-50%) rotate(360deg) ;
+        }
+    }
+    

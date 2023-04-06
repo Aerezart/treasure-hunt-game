@@ -1,44 +1,40 @@
-.inventory_cont{
-    padding: 2em 0px 0px 0px;
-    width: 100%;
+.inventory_cont {
+  padding: 2em 0px 0px 0px;
+  width: 100%;
 }
-.inventory_cont>p{
-text-align: center;
-margin-bottom: 10px;
+.inventory_cont > p {
+  text-align: center;
+  margin-bottom: 10px;
 }
-.inventory{
-   
-    display: flex;
-    justify-content: space-between;
+.inventory {
+  display: flex;
+  justify-content: space-between;
 }
-.inventory>div{
-    border-radius: 20px;
-    height: 113px;
-    width: 113px;
-  
+.inventory > div {
+  border-radius: 20px;
+  height: 113px;
+  width: 113px;
 }
-.inventory>div>div{
-    box-shadow: inset 0  0 30px #e7e7e7;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    transition: 0.2s;
-    padding: 3px;
-   
+.inventory > div > div {
+  box-shadow: inset 0 0 30px #e7e7e7;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 0.2s;
+  padding: 3px;
 }
 
-.hightlight{
-    background-color: rgb(103, 255, 103);
-    cursor: pointer;
+.hightlight {
+  background-color: rgb(103, 255, 103);
+  cursor: pointer;
 }
-.inventory  img{
-    
-    width: 80%;
-    height: 100%;
-    object-fit: contain;
+.inventory img {
+  width: 80%;
+  height: 100%;
+  object-fit: contain;
 }
-.hightlight:hover{
-    transform: scale(1.05);
+.hightlight:hover {
+  transform: scale(1.05);
 }

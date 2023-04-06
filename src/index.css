@@ -2,13 +2,9 @@
   --box-shadow-btns: 0 0 10px rgba(0, 0, 0, 0.345);
   --box-shadow-inner-blocks: inset 0 0 10px rgba(0, 0, 0, 0.345);
 
-  --main-color:#82B4BE;
-
-  
   --border-radius:25px;
   --border-radius-tablet:15px;
   --border-radius-mobile:15px;
-
 
   --h1-font-size:32px;
   --h1-font-size-tablet:30px;
@@ -26,13 +22,13 @@
   --p-font-size-tablet:18px;
   --p-font-size-mobile:15px;
 
-	--bigger-font:18px;
-	--bigger-font-tablet:17px;
-	--bigger-font-mobile:15px;
+  --bigger-font:18px;
+  --bigger-font-tablet:17px;
+  --bigger-font-mobile:15px;
 
-	--bigger-font2:20px;
-	--bigger-font2-tablet:17px;
-	--bigger-font2-mobile:15px;
+  --bigger-font2:20px;
+  --bigger-font2-tablet:17px;
+  --bigger-font2-mobile:15px;
 
   --inner-block-padding:15px;
   --inner-block-padding-tablet:10px;
@@ -138,9 +134,9 @@ body{
 
 
 
-
 h1, h2, h3, h4{
 	margin-bottom: 10px;
+	
 }
 .big-font{
 	font-size: var(--big-font-size);
@@ -153,16 +149,17 @@ h1, .h1, .h1{
 h2, .h2, .h2{
 	font-weight: 600;
 	font-size: var(--h2-font-size);
+	line-height: 25px;
 }
 h3, .h3, .h3{
 	font-weight: 600;
+	line-height: 23px;
 	font-size: var(--h3-font-size);
 }
-p, p *, li, li *, .nasza-oferta-block h3{
-	line-height: 23px;
+button{
+	line-height: 19px;
 }
-
-p, a, label, li, li *, .nasza-oferta-block h3{
+p, a, label, li, li *{
 	font-size: var(--p-font-size);
 	
 }

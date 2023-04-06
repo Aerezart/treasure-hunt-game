@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import classes from './GameInterface.module.css'
 import { useDispatch } from 'react-redux'
 import { gameActions } from '../store/gameSlice'
@@ -12,7 +12,6 @@ const GameInterface = ({
     clickedWrongOption,
     setClickedWrongOption,
     clickedCorrectOption,
-    playerInventory,
     passedPuzzles,
     inventoryFull}) => {
 
@@ -25,22 +24,20 @@ const GameInterface = ({
 
 
     const moveBack = () =>{
-        
         if( currentCell.type == 'puzzle' && !passedPuzzles.includes(currentCell.id)){
             dispatch(gameActions.rememberPassedPuzzle(currentCell.id))
         }
-        
         dispatch(gameActions.changePosition(currentPinPosition - currentCell.ifFalseGoBackBy))
-       
         setClickedCorrectOption(null)
         setClickedWrongOption(null)
-        setTurnInProcess(false)
+        dispatch(gameActions.setTurnInProcess(false))
     }
 
     if(
     currentCell.type == 'trap' || 
     currentCell.type == 'puzzle' ||
-    currentCell.type == 'trap_defendable'){
+    currentCell.type == 'trap_defendable' ||
+    currentCell.type == 'move_forward'){
         actionDescription = currentCell.actionDescription
     }
   
@@ -49,14 +46,16 @@ const GameInterface = ({
     }
     
     if(currentCell.type == 'trap' ||
+    currentCell.type == 'move_forward' ||
     (currentCell.type == 'trap_defendable' && !itemUsed)){
         action = () => {
             currentCell.action(dispatch, currentPinPosition)
-            setTurnInProcess(false)
+            dispatch(gameActions.setTurnInProcess(false))
         }
+       
     }
     if(currentCell.type == 'shortcut'){
-        currentCell.action(dispatch, setTurnInProcess)
+        currentCell.action(dispatch)
     }
     if(currentCell.type == 'puzzle'){
         question = currentCell.question
@@ -71,69 +70,61 @@ const GameInterface = ({
   
 
     const answerGivenHandler = (isCorrect, clickedOption)=>{
-
-       
-
         if(isCorrect){
             setClickedCorrectOption(clickedOption)
-            setTurnInProcess(false)
+            dispatch(gameActions.setTurnInProcess(false))
         }else{
             const correctAnswer = options.find(item=> item.isCorrect==true)
             setClickedCorrectOption(correctAnswer)
             setClickedWrongOption(clickedOption)
         }
-        console.log(clickedWrongOption) 
-        
-
-        
     }
 
-    console.log(currentCell)
-   
+    
 
   return (
     <>
         <div className={`${classes.gameInterfaceDesc} pixel_corners_smaller`}>
-        <h2 className={classes.description}>{description}</h2>
-            {actionDescription && !clickedWrongOption && 
-            <h3 className={classes.actionDescription}>{actionDescription}</h3>}
+            {passedPuzzles.includes(currentCell.id) && question && options ?  
+            <h2 style={{textAlign: 'center'}}>You've already passed this puzzle</h2>
+            :
+            <>
+                <h2 className={classes.description}>{description}</h2>
+                {actionDescription && !clickedWrongOption && 
+                <h3 className={classes.actionDescription}>{actionDescription}</h3>}
 
-            {clickedWrongOption && 
-            <h3 className={classes.actionDescription}>Wrong answer, move {currentCell.ifFalseGoBackBy} cells back</h3>}
-            
-            {action && !clickedWrongOption && <button className={`${classes.move_back} pixel_corners_smaller`} onClick={action}>Move back</button>}
-            {clickedWrongOption && <button className={`${classes.move_back} pixel_corners_smaller`} onClick={moveBack}>Move back</button>}
-
-        </div>
-        
-    
-        <div className={`${classes.gameInterface} pixel_corners_smaller`}>
-           
-
-           
-                {!passedPuzzles.includes(currentCell.id) && question && options ?
-                <div className={classes.quiz_cont}>
-                    <h3>{question}</h3>
-                    <div className={classes.answerOptions}>
-                        {options.map((option)=>{
-                            return <button 
-                            className={`${clickedWrongOption == option ? classes.clickedWrongOption : ""} ${clickedCorrectOption == option ? classes.clickedCorrectOption : ""} pixel_corners_smaller`}
-                            onClick={()=>{answerGivenHandler(option.isCorrect, option)}} 
-                            key={option.optionText}
-                            disabled={clickedWrongOption || clickedCorrectOption}
-                            >{option.optionText}</button>
-                        })}
-                    </div>
-                </div>
+                {clickedWrongOption && 
+                <h3 className={classes.actionDescription}>Wrong answer, move {currentCell.ifFalseGoBackBy} cells back</h3>}
+                
+                {(action && !clickedWrongOption && currentCell.type !== 'move_forward') ? 
+                <button className={`${classes.move_back} pixel_corners_smaller`} onClick={action}>Move back</button>
                 :
-                passedPuzzles.includes(currentCell.id) && question && options ?  
-                <h3>You've already passed this puzzle</h3>
+                (action  && currentCell.type == 'move_forward') ?
+                <button className={`${classes.move_back} pixel_corners_smaller`} onClick={action}>Move forward</button>
                 :
                 ''
                 }
-
-               
-           
+                {clickedWrongOption && <button className={`${classes.move_back} pixel_corners_smaller`} onClick={moveBack}>Move back</button>}
+            </>
+            }
+        </div>
+    
+        <div className={`${classes.gameInterface} pixel_corners_smaller`}>
+            {!passedPuzzles.includes(currentCell.id) && question && options &&
+            <div className={classes.quiz_cont}>
+                <h3>{question}</h3>
+                <div className={classes.answerOptions}>
+                    {options.map((option)=>{
+                        return <button 
+                        className={`${clickedWrongOption == option ? classes.clickedWrongOption : ""} ${clickedCorrectOption == option ? classes.clickedCorrectOption : ""} pixel_corners_smaller`}
+                        onClick={()=>{answerGivenHandler(option.isCorrect, option)}} 
+                        key={option.optionText}
+                        disabled={clickedWrongOption || clickedCorrectOption}
+                        >{option.optionText}</button>
+                    })}
+                </div>
+            </div>
+            }
         </div>
     </>
   )

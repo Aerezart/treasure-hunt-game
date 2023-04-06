@@ -1,73 +1,63 @@
-.gameInterface{
-    margin-top: 1em;
-   background-color: #FFD062;
-   flex-grow: 1;
-   padding: 120px 20px 120px 20px;
-   display: flex;
-   flex-direction: column;
-   justify-content: center;
-   
+.gameInterface {
+  margin-top: 1em;
+  background-color: #ffd062;
+  flex-grow: 1;
+  padding: 120px 20px 120px 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.gameInterface > .quiz_cont {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 
-
+  position: relative;
 }
-.gameInterface>.quiz_cont{
-height: 100%;
-display: flex;
-flex-direction: column;
-justify-content: center;
-
-position: relative;
+.gameInterface > h3 {
+  text-align: center;
 }
-.gameInterface>.quiz_cont:after{
-    content: '';
-    position: absolute;
-   top:50%;
-   left:50%;
-   transform: translateX(-50%) translateY(-50%);
-    z-index: -1;
-    width: 0px;
-    height: 0px;
-    box-shadow:  0 0 100px 200px white;
+.gameInterface > div > h3 {
+  text-align: center;
+  flex: 1;
 }
-.gameInterface>div>h3{
-flex:1;
+.gameInterfaceDesc {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-top: 1em;
+  background-color: #ffd062;
+  height: 300px;
+  padding: 20px;
 }
-.gameInterfaceDesc{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    margin-top: 1em;
-    background-color: #FFD062;
-    height: 300px;
-    padding: 20px;
-
+.move_back {
+  width: 100%;
+  padding: 20px;
 }
-.move_back{
-    width: 100%;
-    padding: 20px;
+.description {
+  text-align: center;
 }
-.description{
-text-align: center;
-}
-.actionDescription{
-    text-align: center;
-    margin: 20px 0px;
+.actionDescription {
+  text-align: center;
+  margin: 20px 0px;
 }
 
-.clickedWrongOption{
-    background-color: rgb(255, 84, 84);
-}
-.clickedCorrectOption{
-    background-color: rgb(72, 255, 127);
-}
 .answerOptions {
-display: flex;
-flex:1;
-flex-wrap: wrap;
-justify-content: space-between;
+  display: flex;
+  flex: 1;
+  flex-wrap: wrap;
+  justify-content: space-between;
 }
-.answerOptions button{
-    width: calc(50% - 10px);
-    height: 90px;
-    margin: 10px 0px;
+.answerOptions button {
+  width: calc(50% - 10px);
+  height: 90px;
+  margin: 10px 0px;
+  background-color: white;
+}
+.clickedWrongOption {
+  background-color: rgb(255, 84, 84) !important;
+}
+.clickedCorrectOption {
+  background-color: rgb(72, 255, 127) !important;
 }

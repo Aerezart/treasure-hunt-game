@@ -1,39 +1,12 @@
-.board::-webkit-scrollbar-track
-{
-	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.1);
-	background-color: #F5F5F5;
-}
-.board::-webkit-scrollbar
-{
-	width: 9px;
-	background-color: white;
-}
-.board::-webkit-scrollbar-thumb
-{
-	background-color: #3399DA;
-}
-.board{
-  
 
-  
+.board{
     width: calc(100%  - 450px);
     max-width: calc(150px * 9 + 40px);
-   
-    max-height: calc(100vh);
-    
-    padding: 20px;
-   
-}
-.board_inner{
-   
+    overflow: hidden;
     position: relative;
-    max-height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    max-height: calc(100vh - 40px);
+    margin: 20px;
 }
-
-
 .drawPin{
    position: relative;
 }
@@ -63,8 +36,10 @@
     background-size: 70%;
     background-position: 50%;
 }
-
-
+.expandBoard{
+    width: calc(100% - 40px);
+    max-width: calc(150px * 9);
+}
 
 
 @keyframes removePin {
@@ -84,32 +59,28 @@
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
+.grid {    
+    -moz-scrollbar-width: 0px !important;
+    scrollbar-width: none;
+}
 .grid::-webkit-scrollbar {
+    display: none !important;
+
+}
+.grid::-webkit-scrollbar-track {
     display: none;
-  }
+}
+
 
 .grid{
-    
     overflow: scroll;
     cursor: grab;
     display: grid;
     gap: 0px 0px;
     grid-template-columns: 150px 150px 150px 150px 150px 150px 150px 150px 150px;
-    background-color: #FED164;
-  
+    background-color: #383838;
     height: calc(100% );
-  position: relative;
+    position: relative;
 }
 
 .grid:after{
@@ -492,10 +463,12 @@
 }
 
 
+.grid>div{
+   outline: 5px solid rgba(244 204 161/30%) !important; 
+   outline-style: dashed !important;
+}
 
 
-
-.grid>div:nth-child(29):after,
 .grid>div:nth-child(30):after,
 .grid>div:nth-child(31):after,
 .grid>div:nth-child(32):after,
@@ -503,123 +476,22 @@
 .grid>div:nth-child(34):after,
 .grid>div:nth-child(35):after,
 
-
 .grid>div:nth-child(65):after,
 .grid>div:nth-child(66):after,
 .grid>div:nth-child(67):after,
 .grid>div:nth-child(68):after,
 .grid>div:nth-child(69):after,
-.grid>div:nth-child(70):after,
-.grid>div:nth-child(71):after,
 
-.grid>div:nth-child(101):after,
-.grid>div:nth-child(102):after,
-.grid>div:nth-child(103):after,
-.grid>div:nth-child(104):after,
-.grid>div:nth-child(105):after,
-.grid>div:nth-child(106):after,
-.grid>div:nth-child(107):after{
+.grid>div:nth-child(119):after,
+.grid>div:nth-child(120):after,
+.grid>div:nth-child(121):after,
+.grid>div:nth-child(122):after,
+.grid>div:nth-child(123):after,
+.grid>div:nth-child(124):after,
+.grid>div:nth-child(125):after{
     transform: rotateY(180deg) ;
 }
 
-/*
-.grid>div:nth-child(7){
-border-radius: 0px 40px 0px 0px;
-}
-.grid>div:nth-child(21){
-    border-radius:  0px 0px 40px  0px ;
-}
-
-
-.grid>div:nth-child(15){
-border-radius: 40px 0px  0px 0px;
-}
-.grid>div:nth-child(29){
-border-radius:  0px  0px  0px 40px;
-} 
-
-
-.grid>div:nth-child(35){
-border-radius:  0px 40px 0px  0px;
-}
-.grid>div:nth-child(49){
-border-radius:  0px  0px 40px 0px;
-}
-
-
-.grid>div:nth-child(43){
-border-radius: 40px 0px  0px 0px;
-}
-.grid>div:nth-child(57){
-border-radius:  0px  0px  0px 40px;
-} 
-    
-
-.grid>div:nth-child(63){
-border-radius:  0px 40px 0px  0px;
-}
-.grid>div:nth-child(77){
-border-radius:  0px  0px 40px 0px;
-}
-    
-    
-.grid>div:nth-child(71){
-border-radius:  40px 0px  0px  0px;
-}
-.grid>div:nth-child(85){
-border-radius:  0px  0px  0px 40px;
-}
-*/
-
-
-/*
-.grid>div:nth-child(7) p{
-    position: relative;
-    bottom: -14%;
-    left:-14%;
-}
-.grid>div:nth-child(21) p{
-    position: relative;
-    bottom: 14%;
-    left:-14%;
-}
 
 
 
-.grid>div:nth-child(15) p{
-    position: relative;
-    bottom: -14%;
-    left:14%;
-}
-.grid>div:nth-child(29) p{
-    position: relative;
-    bottom: 14%;
-    left:14%;
-}
-*/
-
-
-
-/*
-.grid>div:nth-child(13), .grid>div:nth-child(41){
-    background-color: #3399DA;
-}
-.grid>div:nth-child(13):after, .grid>div:nth-child(41):after{
-    content: '';
-    position: absolute;
-    inset: 0;
-    background-color: #FFD062;
-    border-radius: 0px 20px 20px 0px;
-}
- .grid>div:nth-child(23), .grid>div:nth-child(51){
-    background-color: #3399DA;
-}
- .grid>div:nth-child(23):after,  .grid>div:nth-child(51):after{
-    content: '';
-    position: absolute;
-    inset: 0;
-    background-color: #FFD062;
-    border-radius: 20px 0px 0px 20px;
-}
-
-*/

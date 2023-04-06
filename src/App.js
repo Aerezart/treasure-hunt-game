@@ -1,14 +1,12 @@
-import './App.css';
-import Board from './Board/Board';
-import ControlsNav from './ControlsNav/ControlsNav';
+import "./App.css";
+import Board from "./Board/Board";
+import ControlsNav from "./ControlsNav/ControlsNav";
 
 function App() {
   return (
     <div className="app">
-     
-        <Board/>
-        <ControlsNav/>
-     
+      <Board />
+      <ControlsNav />
     </div>
   );
 }

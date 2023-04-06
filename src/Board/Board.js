@@ -1,16 +1,23 @@
 import React, { useEffect, useState, useLayoutEffect , useCallback, useRef} from 'react'
 import classes from './Board.module.css'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
+import { gameActions } from '../store/gameSlice'
+import GameFinished from './GameFinished'
+import Instruction from './Instruction'
 
 
 const Board = () => {
 
+    const dispatch = useDispatch()
     const currentPinPosition = useSelector(state=>state.game.currentPinPosition)   
     const isGameStarted = useSelector(state=>state.game.isGameStarted)   
+    const isGameFinished = useSelector(state=>state.game.isGameFinished)   
     const diceValue = useSelector(state=>state.game.currentDiceVal)   
 
 
     useEffect(()=>{},[currentPinPosition])
+    console.log(currentPinPosition)
+   
     const pin = (pos) => {
     
       if(
@@ -21,7 +28,6 @@ const Board = () => {
       }else if(isGameStarted && 
         currentPinPosition !== pos &&
         currentPinPosition - diceValue == pos
-        
       ){
         console.log(currentPinPosition - diceValue)
         return classes.removePin 
@@ -68,10 +74,21 @@ const Board = () => {
       isDraggingRef.current = false;
     };
 
+    const restartHandler = ()=>{
+      dispatch(gameActions.reset())
+  }
+
+
+
    
 
   return ( 
-    <div className={`${classes.board}`}>
+    <div className={`${classes.board} ${isGameFinished ? classes.expandBoard : '' }`}>
+
+        <Instruction/>
+
+        {isGameFinished && <GameFinished restartHandler={restartHandler}/> }
+
 
         <div className={`${classes.grid} pixel_corners`} ref={containerRef}  
          onMouseDown={handleMouseDown}
@@ -79,6 +96,7 @@ const Board = () => {
          onMouseUp={handleMouseUp}
          onMouseLeave={handleMouseLeave}>
 
+            
             <div className={classes.empty}></div>
             <div className={classes.empty}></div>
             <div className={classes.empty}></div>
@@ -233,6 +251,7 @@ const Board = () => {
             <div className={classes.empty}></div>
         </div>
       </div>
+    
   )
 }
 

@@ -1,17 +1,55 @@
-.controlsNav{
-    width: 450px;
-    max-height: 100vh;
-    padding: 20px;
+.controlsNav {
+  width: 450px;
+  max-height: 100vh;
+  padding: 20px;
 }
-.controlsNavInner{
-    background-color: white;
-    width: 100%;
-    height: 100%;
-    border-radius: 20px;
-    padding: 20px;
+.controlsNavInner {
+  background-color: white;
+  width: 100%;
+  height: 100%;
+  border-radius: 20px;
+  padding: 20px;
 
-    display: flex;
-    flex-direction: column;
-   
+  display: flex;
+  flex-direction: column;
 }
 
+.hideControlsNav {
+  animation: hide 0.9s forwards;
+  transform: translateX(0px);
+  z-index: 100;
+  position: absolute;
+  right: 0;
+  height: 100%;
+}
+
+.showControlsNav {
+  animation: show 0.9s forwards;
+  transform: translateX(500px);
+}
+
+@keyframes show {
+  0% {
+    opacity: 0;
+
+    transform: translateX(500px);
+  }
+  100% {
+    opacity: 1;
+
+    transform: translateX(0px);
+  }
+}
+
+@keyframes hide {
+  0% {
+    opacity: 1;
+
+    transform: translateX(0px);
+  }
+  100% {
+    opacity: 0;
+    width: 0px;
+    transform: translateX(500px);
+  }
+}

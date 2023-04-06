@@ -1,5 +1,4 @@
-import React, { useState } from 'react'
-import { useSelector } from 'react-redux'
+import React from 'react'
 import classes from './Inventory.module.css'
 import { allGameItems } from '../store/gameInventory'
 import { useDispatch } from 'react-redux'
@@ -7,27 +6,21 @@ import { gameActions } from '../store/gameSlice'
 
 const Inventory = ({
   currentCell, 
-  setTurnInProcess, 
   setItemUsed, 
   itemUsed,
   playerInventory}) => {
-
   const dispatch = useDispatch()
- 
-  
 
+  
   const getItemImage = (index) =>{
-   
     return allGameItems.find((item)=>{ 
-      console.log(playerInventory[index] )
     return item.id == playerInventory[index] }).image
   }
 
   const itemUseHandler = (index)=>{
-    console.log('asd' + itemUsed)
     if(currentCell.type == 'trap_defendable' && !itemUsed){
       setItemUsed(true)
-      setTurnInProcess(false)
+      dispatch(gameActions.setTurnInProcess(false))
       dispatch(gameActions.removeItemFromInventory(index))
     }
   }
